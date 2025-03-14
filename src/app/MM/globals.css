@@ -1,0 +1,250 @@
+:root {
+  --background: #2d2a2a; /* Dark background */
+  --foreground: #f0f0f0; /* Light text */
+  --blue-cronos: #0178ff; /* Cronos blue */
+  --highlight: #f8c300; /* Yellow highlight */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Orbitron', sans-serif;
+  height: 100%; /* Mantenuto per occupare l'intera altezza */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: var(--blue-cronos);
+  color: white;
+  border: 2px solid var(--blue-cronos);
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.ticket-count-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ticket-count-container h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ticket-count-container p {
+  margin: 0;
+}
+
+button:hover {
+  background-color: white;
+  color: var(--blue-cronos);
+}
+
+button:active {
+  background-color: #333;
+  color: white;
+}
+
+h1, h2, h3, p, span, li {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--highlight);
+  text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--blue-cronos);
+}
+
+h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--blue-cronos); /* #0178ff, blu Cronos */
+}
+
+.pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Assicura che tutto sia centrato */
+  justify-content: flex-start; /* Allinea il contenuto in alto */
+  text-align: center;
+  height: 100vh; /* Fissa l'altezza alla viewport */
+  overflow: hidden; /* Rimuove la barra scorrevole */
+  padding: 0; /* Nessun padding per evitare spazi extra */
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.layout-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.left-column {
+  position: relative;
+  width: calc(20% + 2.5cm);
+  background-image: url('/images/mm_left.png');
+  background-size: cover;
+  background-position: left center;
+  min-height: 100vh; /* Assicura che la colonna occupi tutta l’altezza */
+  display: flex; /* Rinforza il comportamento flex */
+  flex-direction: column; /* Organizza i figli in colonna */
+  justify-content: space-between; /* Massimizza lo spazio tra Game Rules e Prize Table */
+}
+
+.right-column {
+  position: relative;
+  width: calc(20% + 2.5cm);
+  background-image: url('/images/mm_right.png');
+  background-size: cover;
+  background-position: right center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.top-winners {
+  align-self: flex-start;
+}
+
+.game-rules {
+  align-self: flex-end;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--foreground);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
+
+.right-column,
+.left-column,
+.main-content {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.main-content {
+  width: calc(60% - 5cm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0; /* Aggiunto padding verticale per spazio */
+  overflow-y: auto;
+}
+
+/* Stile per il titolo della tabella */
+.active-bets-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--blue-cronos);
+  margin-bottom: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Stile per il messaggio "No active bets" */
+.no-active-bets {
+  color: var(--foreground);
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* Contenitore con scroll per la tabella */
+.table-scroll-container {
+  max-height: 150px; /* Altezza ridotta per tabella piccola */
+  overflow-y: auto;
+  background: transparent;
+}
+
+/* Stile per il tasto Refresh */
+.refresh-button {
+  padding: 2px 6px;
+  font-size: 12px;
+  margin: 0;
+  background-color: transparent;
+  border: 1px solid var(--blue-cronos);
+  border-radius: 4px;
+  color: var(--blue-cronos);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.refresh-button:hover {
+  background-color: var(--blue-cronos);
+  color: var(--foreground);
+}
+
+.refresh-button:active {
+  background-color: var(--highlight);
+  color: var(--background);
+}
+
+/* Stile per il logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 10px 0; /* Aggiungiamo un piccolo margine inferiore (10px) per distanziare dal ConnectButton */
+  padding: 0;
+  flex-shrink: 0; /* Impedisce al logo di restringersi troppo */
+}
+
+.logo-banner {
+  max-width: 60%; /* Aumentiamo un po' il logo da 50% a 60% */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Opzionale: ridimensionamento per schermi piccoli */
+@media (max-width: 640px) {
+  .logo-banner {
+    max-width: 80%; /* Riduce ulteriormente su schermi piccoli */
+  }
+}
