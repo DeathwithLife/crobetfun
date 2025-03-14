@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
-import { ethers } from "ethers";
+import { ethers, providers, utils } from "ethers";
 import cronosSniperABI from "@/abi/CronosSniper.json";
 import { useBetContext } from "@/context/BetContext";
 
@@ -28,7 +28,7 @@ export default function PastBets() {
     try {
       const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS_MM;
       if (!contractAddress) throw new Error("Contract address not configured!");
-      const provider = new ethers.JsonRpcProvider("https://evm-t3.cronos.org");
+      const provider = new providers.JsonRpcProvider("https://evm-t3.cronos.org");
       const contract = new ethers.Contract(contractAddress, cronosSniperABI, provider);
 
       const pastBetsDataRaw = await contract.getUserPastBets({ from: address });
@@ -68,7 +68,7 @@ export default function PastBets() {
             type: gameTypes[Number(betDetails.gameType)] || "Unknown",
             predictedPrice: Number(bet.predictedPrice) / 1e5,
             closingPrice: Number(bet.closingPrice) / 1e5,
-            winnings: ethers.formatEther(bet.winnings),
+            winnings: utils.formatEther(bet.winnings),
             result: bet.won ? "Won" : "Lost",
           };
         })
