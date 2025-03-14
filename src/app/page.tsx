@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { ConnectButton } from '@/components/ConnectButton';
 import Image from 'next/image';
 import Link from "next/link";
-import { Abi, formatEther, Address } from 'viem'; // Importa Address da viem
+import { Abi, formatEther, Address } from 'viem'; 
 import cronosSniperArtifact from '@/abi/CronosSniper.json';
 import croCaveArtifact from '@/abi/CroCave.json';
 import treasureHunterArtifact from '@/abi/TreasureHunterCronos.json';
